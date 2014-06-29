@@ -85,13 +85,16 @@ public class BinomialLogic {
         String[] resS;
         double[] res2;
 
+        code.clear();
+        caller.cleanRCode();
+
         code.addIntArray("quantilis", quantilis);
         code.addIntArray("trails", new int[] {trails});
         code.addDoubleArray("probabilitySuccess", new double[] {probabilitySuccess});
         code.addRCode("res <- qbinom(quantilis, trails, probabilities)");
 
         caller.setRCode(code);
-        caller.runAndReturnResult("res");
+        caller.runAndReturnResultOnline("res");
 
         resS = caller.getParser().getAsStringArray("res");
         res2 = new double[resS.length];
@@ -148,7 +151,7 @@ public class BinomialLogic {
         code.addRCode("res <- rbinom(observations, trails, probabilities)");
 
         caller.setRCode(code);
-        caller.runAndReturnResult("res");
+        caller.runAndReturnResultOnline("res");
         res2 = caller.getParser().getAsDoubleArray("res");
 
         try {
