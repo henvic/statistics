@@ -36,8 +36,8 @@ public class PoissonLogic {
 
             code.addDoubleArray("res2", res2);
             code.addStringArray("str", str);
-            code.addStringArray("lambdaS", new String[] {"Probabilidade (para lambda = " + lambda + ")" });
-            code.addRCode("barplot(res2, main=\"Density Poisson\", xlab=\"Variavel P(X = x)\", border=\"black\", ylab=lambdaS, ylim=c(0,1.0), font.lab=2, names.arg=str, col=rainbow(length(str)))");
+            code.addStringArray("lambdaS", new String[] {"Probabilidade P(X = x)(para lambda = " + lambda + ")" });
+            code.addRCode("barplot(res2, main=\"Density Poisson\", xlab=\"Variavel (x)\", border=\"black\", ylab=lambdaS, ylim=c(0,1.0), font.lab=2, names.arg=str, col=rainbow(length(str)))");
             code.addRCode("abline(h=res)");
             code.endPlot();
 
@@ -82,8 +82,8 @@ public class PoissonLogic {
 
             code.addDoubleArray("res2", res2);
             code.addStringArray("str", str);
-            code.addStringArray("lambdaS", new String[] {"Probabilidade (para lambda = " + lambda + ")" });
-            code.addRCode("barplot(res2, main=\"Distribution Function - Poisson\", xlab=\"Variavel P(X <= x)\", border=\"black\", ylab=lambdaS, ylim=c(0,1.0), font.lab=2, names.arg=str, col=rainbow(length(str)))");
+            code.addStringArray("lambdaS", new String[] {"Probabilidade P(X <= x) (para lambda = " + lambda + ")" });
+            code.addRCode("barplot(res2, main=\"Distribution Function - Poisson\", xlab=\"Variavel (x)\", border=\"black\", ylab=lambdaS, ylim=c(0,1.0), font.lab=2, names.arg=str, col=rainbow(length(str)))");
             code.addRCode("abline(h=res)");
             code.endPlot();
 
@@ -138,7 +138,7 @@ public class PoissonLogic {
             System.out.print(x + " ");
 
             if (x.equals("Inf")) {
-                res2[counter] = 100;
+                res2[counter] = 99999999;
             }
             else if (x.equals("NaN")){
 //                dont = true;
@@ -147,7 +147,7 @@ public class PoissonLogic {
             }
             counter += 1;
         }
-
+//o valor da variavel aleatoria correspondente no grafico de probabilidade acumulada (vetor p) e igual
             try {
                 File file = code.startPlot();
 
@@ -155,7 +155,8 @@ public class PoissonLogic {
                 code.addDoubleArray("res2", res2);
 //                code.addRCode("barplot(res2)");
                 code.addStringArray("str", str);
-                code.addRCode("barplot(res2, main=\"Quantile Function - Poisson\", xlab=\"Density\", border=\"black\", font.lab=2, names.arg=str, col=rainbow(length(str)))");
+                code.addRCode("resMax <- max(res)");
+                code.addRCode("barplot(res2, main=\"Quantile Function - Poisson\", ylab=\"Variavel aleatoria correspondente no grafico de probabilidade acumulada\", xlab=\"Probabilities\", border=\"black\", font.lab=2, names.arg=str, ylim=c(0, max(res)), col=rainbow(length(str)))");
                 code.addRCode("abline(h=res2)");
                 code.endPlot();
 
@@ -200,7 +201,7 @@ public class PoissonLogic {
             code.addStringArray("str", str);
             code.addStringArray("lambdaS", new String[] {"Os numeros variam proximo de " + lambda + "" });
             code.addRCode("barplot(res2, main=\"Random numbers - Poisson\", xlab=\"Numeros aleatorios\", border=\"black\", ylab=lambdaS, font.lab=2, names.arg=str, col=rainbow(length(str)))");
-            code.addRCode("abline(h=res2)");
+            code.addRCode("abline(h=lambda)");
             code.endPlot();
 
             caller.setRCode(code);

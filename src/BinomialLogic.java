@@ -29,7 +29,8 @@ public class BinomialLogic {
             File file = code.startPlot();
 
             code.addDoubleArray("res2", res2);
-            code.addRCode("barplot(res2)");
+            code.addStringArray("ylabS", new String[] {"Probabilidade P(X = x) (Para chance de sucesso = " + successProbability + ")"});
+            code.addRCode("barplot(res2, names.arg=quantilis, ylab=ylabS, xlab=\"Variavel (x)\", font.lab=2, col=rainbow(length(quantilis)), ylim=c(0, 1.0))");
             code.endPlot();
 
             caller.setRCode(code);
@@ -99,7 +100,7 @@ public class BinomialLogic {
         resS = caller.getParser().getAsStringArray("res");
         res2 = new double[resS.length];
 
-        boolean dont = false;
+
         int counter = 0;
         for (String x : resS) {
             System.out.print(x + " ");
@@ -114,8 +115,6 @@ public class BinomialLogic {
             }
             counter += 1;
         }
-
-        if(dont == false) {
             try {
                 File file = code.startPlot();
 
@@ -135,14 +134,14 @@ public class BinomialLogic {
             } catch (IOException ignore) {
                 System.out.println("ignore!");
             }
-        }
+
         return resS;
 
     }
 
     public double[] r(int observations, int trails, double probabilitySuccess) {
         double[] res2;
-        String str = "";
+        String[] str = new String[observations];
         RCode code = new RCode();
 
         code.addIntArray("observations", new int[] {observations});
@@ -154,11 +153,20 @@ public class BinomialLogic {
         caller.runAndReturnResultOnline("res");
         res2 = caller.getParser().getAsDoubleArray("res");
 
+        int counter = 0;
+        for (double each : res2){
+            str[counter] = each + "";
+            counter += 1;
+        }
+
         try {
             File file = code.startPlot();
 
             code.addDoubleArray("res2", res2);
-            code.addRCode("barplot(res2)");
+            code.addStringArray("str", str);
+            code.addStringArray("lambdaS", new String[] {"Os numeros variam proximo de " + probabilitySuccess + "" });
+            code.addRCode("barplot(res2, xlab=\"Numeros aleatorios\", border=\"black\", ylab=lambdaS, font.lab=2, names.arg=str, col=rainbow(length(str))))");
+            code.addRCode("abline(h=res2)");
             code.endPlot();
 
             caller.setRCode(code);

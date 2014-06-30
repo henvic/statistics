@@ -13,15 +13,16 @@ public class Program {
 
     public void poisson() {
         System.out.println("Get Poisson Density:");
-        double[] temp = poissonLogic.d(new double[] {1, 2, 5, 4, 1}, 1);
 
-        for (double x : temp) {
+        for (double x : poissonLogic.d(new double[] {1, 2, 5, 4, 1}, 1)) {
             System.out.println(x + " ");
         }
 
         System.out.println("");
         System.out.println("Get Poisson Distribution:");
-        for (double x : poissonLogic.p(new double[] {1, 2, 5, 4, 1}, 1)) {
+        double[] temp = poissonLogic.p(new double[] {0, 1, 2, 5, 4, 1, 12, 15, 20}, 2);
+
+        for (double x : temp) {
             System.out.println(x + " ");
         }
 
@@ -29,7 +30,7 @@ public class Program {
 
         System.out.println("Get Poisson Quantile:");
 
-        poissonLogic.q(temp, 1);
+        poissonLogic.q(new double[] {0.7, 1}, 200);
 
         System.out.println("");
 
@@ -38,22 +39,23 @@ public class Program {
     }
 
     public void binomial() {
-        System.out.println("Get Poisson Density:");
-        double[] temp = binomialLogic.d(new int[] {1, 2, 5, 4, 1}, 1, 0.5);
+//        System.out.println("Get Binomial Density:");
 
-        for (double x : temp) {
-            System.out.println(x + " ");
-        }
+//
+//        for (double x : binomialLogic.d(new int[] {1, 2, 20, 4, 1}, 4, 0.5)) {
+//            System.out.println(x + " ");
+//        }
+//
+//        System.out.println("");
+//        System.out.println("Get Binomial Distribution:");
+        double[] temp = binomialLogic.p(new int[] {1, 2, 5, 4, 1}, 1, 0.5);
+//        for (double x : temp) {
+//            System.out.println(x + " ");
+//        }
 
         System.out.println("");
-        System.out.println("Get Poisson Distribution:");
-        for (double x : binomialLogic.p(new int[] {1, 2, 5, 4, 1}, 1, 0.5)) {
-            System.out.println(x + " ");
-        }
 
-        System.out.println("");
-
-        System.out.println("Get Poisson Quantile:");
+        System.out.println("Get Binomial Quantile:");
 
         int[] temp2 = new int[temp.length];
 
@@ -62,11 +64,11 @@ public class Program {
         }
 
         binomialLogic.q(temp2, 1, 0.6);
-
-        System.out.println("");
-
-        System.out.println("Get Poisson Random:");
-        binomialLogic.r(10, 3, 0.5);
+//
+//        System.out.println("");
+//
+//        System.out.println("Get Binomial Random:");
+//        binomialLogic.r(10, 3, 0.5);
     }
 
     public void run() {
