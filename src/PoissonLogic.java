@@ -155,8 +155,7 @@ public class PoissonLogic {
                 code.addDoubleArray("res2", res2);
 //                code.addRCode("barplot(res2)");
                 code.addStringArray("str", str);
-                code.addStringArray("lambdaS", new String[] {"Probabilidade (para lambda = " + lambda + ")" });
-                code.addRCode("barplot(res2, main=\"Quantile Function - Poisson\", xlab=\"Variavel aleatoria\", border=\"black\", ylab=lambdaS, font.lab=2, names.arg=str, col=rainbow(length(str)))");
+                code.addRCode("barplot(res2, main=\"Quantile Function - Poisson\", xlab=\"Density\", border=\"black\", font.lab=2, names.arg=str, col=rainbow(length(str)))");
                 code.addRCode("abline(h=res2)");
                 code.endPlot();
 
