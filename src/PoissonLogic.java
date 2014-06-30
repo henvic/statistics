@@ -198,7 +198,6 @@ public class PoissonLogic {
             File file = code.startPlot();
 
             code.addDoubleArray("res2", res2);
-//            code.addRCode("barplot(res2)");
             code.addStringArray("str", str);
             code.addStringArray("lambdaS", new String[] {"Os numeros variam proximo de " + lambda + "" });
             code.addRCode("barplot(res2, xlab=\"Numeros aleatorios\", border=\"black\", ylab=lambdaS, font.lab=2, names.arg=str, col=rainbow(length(str)))");
@@ -207,7 +206,6 @@ public class PoissonLogic {
 
             caller.setRCode(code);
             caller.runOnly();
-//            caller.runAndReturnResultOnline("barplot(res2)");
 
             for (double each : res2) {
                 System.out.println(each);
