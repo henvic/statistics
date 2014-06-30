@@ -37,7 +37,7 @@ public class PoissonLogic {
             code.addDoubleArray("res2", res2);
             code.addStringArray("str", str);
             code.addStringArray("lambdaS", new String[] {"Probabilidade (para lambda = " + lambda + ")" });
-            code.addRCode("barplot(res2, xlab=\"Variavel P(X = x)\", border=\"black\", ylab=lambdaS, ylim=c(0,1.0), font.lab=2, names.arg=str, col=rainbow(length(str)))");
+            code.addRCode("barplot(res2, main=\"Density Poisson\", xlab=\"Variavel P(X = x)\", border=\"black\", ylab=lambdaS, ylim=c(0,1.0), font.lab=2, names.arg=str, col=rainbow(length(str)))");
             code.addRCode("abline(h=res)");
             code.endPlot();
 
@@ -83,7 +83,7 @@ public class PoissonLogic {
             code.addDoubleArray("res2", res2);
             code.addStringArray("str", str);
             code.addStringArray("lambdaS", new String[] {"Probabilidade (para lambda = " + lambda + ")" });
-            code.addRCode("barplot(res2, xlab=\"Variavel P(X <= x)\", border=\"black\", ylab=lambdaS, ylim=c(0,1.0), font.lab=2, names.arg=str, col=rainbow(length(str)))");
+            code.addRCode("barplot(res2, main=\"Distribution Function - Poisson\", xlab=\"Variavel P(X <= x)\", border=\"black\", ylab=lambdaS, ylim=c(0,1.0), font.lab=2, names.arg=str, col=rainbow(length(str)))");
             code.addRCode("abline(h=res)");
             code.endPlot();
 
@@ -156,7 +156,7 @@ public class PoissonLogic {
 //                code.addRCode("barplot(res2)");
                 code.addStringArray("str", str);
                 code.addStringArray("lambdaS", new String[] {"Probabilidade (para lambda = " + lambda + ")" });
-                code.addRCode("barplot(res2, xlab=\"Variavel aleatoria\", border=\"black\", ylab=lambdaS, font.lab=2, names.arg=str, col=rainbow(length(str)))");
+                code.addRCode("barplot(res2, main=\"Quantile Function - Poisson\", xlab=\"Variavel aleatoria\", border=\"black\", ylab=lambdaS, font.lab=2, names.arg=str, col=rainbow(length(str)))");
                 code.addRCode("abline(h=res2)");
                 code.endPlot();
 
@@ -200,7 +200,7 @@ public class PoissonLogic {
             code.addDoubleArray("res2", res2);
             code.addStringArray("str", str);
             code.addStringArray("lambdaS", new String[] {"Os numeros variam proximo de " + lambda + "" });
-            code.addRCode("barplot(res2, xlab=\"Numeros aleatorios\", border=\"black\", ylab=lambdaS, font.lab=2, names.arg=str, col=rainbow(length(str)))");
+            code.addRCode("barplot(res2, main=\"Random numbers - Poisson\", xlab=\"Numeros aleatorios\", border=\"black\", ylab=lambdaS, font.lab=2, names.arg=str, col=rainbow(length(str)))");
             code.addRCode("abline(h=res2)");
             code.endPlot();
 
