@@ -1,17 +1,43 @@
 public class Binomial implements Distribution {
-    private int n;
+    public int getR() {
+		return r;
+	}
+
+	public void setR(int r) {
+		this.r = r;
+	}
+
+	public void setN(int[] n) {
+		this.n = n;
+	}
+
+	public void setK(int k) {
+		this.k = k;
+	}
+
+	public void setP(double p) {
+		this.p = p;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	private int[] n;
     private int k;
-    private int p;
+    private double p;
+    private int r;
     private int id;
 
-    public Binomial(int n, int k, int p, int id) {
+    public Binomial(int[] n, int k, double p, int id, int r) {
         this.n = n;
         this.k = k;
         this.p = p;
         this.id = id;
+        this.r = r;
     }
 
-    public int getN() {
+    public int[] getN() {
         return n;
     }
 
@@ -19,7 +45,7 @@ public class Binomial implements Distribution {
         return k;
     }
 
-    public int getP() {
+    public double getP() {
         return p;
     }
 
