@@ -5,7 +5,6 @@ public class Repo {
     private ArrayList<Distribution> objects = new ArrayList<Distribution>();
 
     public void add(Distribution o) {
-
         objects.add(o);
     }
 
