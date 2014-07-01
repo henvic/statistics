@@ -10,39 +10,27 @@ public class Program {
         this.caller = caller;
         this.poissonLogic = new PoissonLogic(caller);
         this.binomialLogic = new BinomialLogic(caller);
+        this.pascalLogic = new PascalLogic(caller);
     }
 
     public void poisson() {
         System.out.println("Get Poisson Density:");
-
-        double[] p = poissonLogic.d(new double[] {1, 2, 5, 4, 1}, 1);
-
-        for (double x : p) {
-            System.out.println(x + " ");
-        }
+        System.out.println(poissonLogic.d(new double[] {1, 2, 5, 4, 1}, 1));
     }
 
     public void binomial() {
-        double[] p = binomialLogic.d(new int[] {1, 2, 20, 4, 1}, 4, 0.5);
         System.out.println("Get Binomial Density:");
-
-        for (double x : p) {
-            System.out.println(x + " ");
-        }
+        System.out.println(binomialLogic.d(new int[] {1, 2, 20, 4, 1}, 4, 0.5));
     }
 
-    public void negativeBinomial() {
-        double[] p = pascalLogic.d(new int[] {1, 2, 20, 4, 1}, 4, 0.5);
-        System.out.println("Get Binomial Density:");
-
-        for (double x : p) {
-            System.out.println(x + " ");
-        }
+    public void pascal() {
+        System.out.println("Get Pascal Density:");
+        System.out.println(pascalLogic.d(new int[] {1, 5, 8}, 5, 0.5));
     }
 
     public void run() {
         poisson();
         binomial();
-        negativeBinomial();
+        pascal();
     }
 }

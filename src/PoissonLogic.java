@@ -11,7 +11,7 @@ public class PoissonLogic {
         this.caller = caller;
     }
 
-    public double[] d(double[] quantilis, double lambda) {
+    public String d(double[] quantilis, double lambda) {
         RCode code = new RCode();
 
         double[] res2;
@@ -48,6 +48,12 @@ public class PoissonLogic {
             System.out.println("ignore!");
         }
 
-        return res2;
+        String end = "";
+
+        for (double e : res2) {
+            end += e + " ";
+        }
+
+        return end;
     }
 }

@@ -11,7 +11,7 @@ public class BinomialLogic {
         this.caller = caller;
     }
 
-    public double[] d(int[] quantilis, int trails, double successProbability) {
+    public String d(int[] quantilis, int trails, double successProbability) {
         RCode code = new RCode();
 
         double[] res2;
@@ -41,6 +41,12 @@ public class BinomialLogic {
             System.out.println("ignore!");
         }
 
-        return res2;
+        String end = "";
+
+        for (double e : res2) {
+            end += e + " ";
+        }
+
+        return end;
     }
 }
